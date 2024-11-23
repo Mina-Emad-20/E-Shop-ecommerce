@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import SearchCountResult from "../../Components/home/utilities/SearchCountResult";
-import CategoryHeader from "../../Components/products/CategoryHeader";
+import CategoryHeader from '../../Components/categories/CategoryHeader'
 import SideFilter from "../../Components/home/utilities/SideFilter";
 import CardProductContainer from "../../Components/products/CardProductContainer";
 import Pagination from "../../Components/home/utilities/Pagination";

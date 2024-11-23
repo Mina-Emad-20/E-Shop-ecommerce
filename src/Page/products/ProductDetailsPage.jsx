@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import CategoryHeader from "../../Components/products/CategoryHeader";
+import CategoryHeader from '../../Components/categories/CategoryHeader'
 import ProductDetails from "../../Components/products/ProductDetails";
 import RateContainer from "../../Components/rate/RateContainer";
 import CardProductContainer from "../../Components/products/CardProductContainer";

@@ -1,4 +1,4 @@
-import { Card, Col, ToastContainer } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 
 import prod1 from "../../images/prod1.png";
 import rate from "../../images/rate.png";
@@ -63,7 +63,6 @@ export default function ProductCard() {
                     </Card.Text>
                 </Card.Body>
             </Card>
-            <ToastContainer />
         </Col>
     )
 }

@@ -1,5 +1,5 @@
 import { Container, Row } from "react-bootstrap";
-import CategoriesCard from "../../Components/categories/CategoriesCard";
+import CategoriesCard from '../categories/CategoriesCard'
 
 import clothe from '../../images/clothe.png'
 import cat2 from '../../images/cat2.png'
