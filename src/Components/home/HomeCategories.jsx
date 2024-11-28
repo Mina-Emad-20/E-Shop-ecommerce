@@ -18,6 +18,7 @@ export default function HomeCategories() {
     const category = useSelector(state => state.allCategory.category)
     const loading = useSelector(state => state.allCategory.loading)
     const colors = ["#FFD3E8", "#F4DBA5", "#55CFDF", "#0034FF", "#FFD3E8", "#FF6262"]
+
     return (
         <Container>
             <SubTitle title='Categories' btntitle='More' pathText='/allcategory' />
