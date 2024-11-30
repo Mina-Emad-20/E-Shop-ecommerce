@@ -11,7 +11,7 @@ export default function AllCategoriesPage() {
     const dispatch = useDispatch()
     //first load
     useEffect(() => {
-        dispatch(getAllCategory(4))
+        dispatch(getAllCategory(10))
     }, [])
     // to get state redux
     const category = useSelector(state => state.allCategory.category)

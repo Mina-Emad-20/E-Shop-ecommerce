@@ -6,13 +6,14 @@ const useInsertDataWithImage = async (url, params) => {
         headers: { "content-type": "multipart/from-data" }
     }
     const res = await baseUrl.post(url, params, config)
-    return res.data
+
+    return res
 }
 
 
 const useInsertData = async (url, params) => {
     const res = await baseUrl.post(url, params)
-    return res.data
+    return res
 }
 
 export { useInsertDataWithImage, useInsertData };

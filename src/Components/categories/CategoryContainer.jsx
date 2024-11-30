@@ -4,21 +4,21 @@ import clothe from '../../images/clothe.png'
 import mobile from '../../images/mobile.png'
 import laptop from '../../images/labtop.png'
 import sale from '../../images/sale.png'
-import accessories from '../../images/accessories-Photoroom.png'
 import homeDevices from '../../images/homeDevices-Photoroom.png'
 import makeup from '../../images/makeup-Photoroom.png'
 import watchies from '../../images/watchies-Photoroom.png'
 import fashion from '../../images/fashion-Photoroom.png'
 import menCloth from '../../images/menClothes-Photoroom.png'
+import accessories from '../../images/accessories-Photoroom.png'
 import { useSelector } from "react-redux"
 
 
 
 
 export default function CategoryContainer({ data }) {
-    //catgories images because the backend file has no images
-    const images = [mobile, accessories, clothe, sale, laptop, homeDevices, makeup, watchies, fashion, menCloth]
-    //back ground colors
+    // images array because data base doesnt have an images 
+    const images = [clothe, mobile, laptop, sale, homeDevices, makeup, watchies, fashion, menCloth, accessories]
+    // back ground colors
     const colors = ["#FFD3E8", "#F4DBA5", "#55CFDF", "#0034FF", "#FFD3E8", "#FF6262"]
     const loading = useSelector(state => state.allCategory.loading)
     return (

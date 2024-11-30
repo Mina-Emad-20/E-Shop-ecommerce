@@ -25,7 +25,7 @@ export const getAllCategory = (limit) => async (dispatch) => {
 // get all category with pagination
 export const getAllCategoryPage = (page) => async (dispatch) => {
     try {
-        const response = await useGetData(`/api/v1/categories?limit=4&page=${page}`)
+        const response = await useGetData(`/api/v1/categories?limit=10&page=${page}`)
         dispatch({
             type: GET_ALL_CATEGORY,
             payload: response,

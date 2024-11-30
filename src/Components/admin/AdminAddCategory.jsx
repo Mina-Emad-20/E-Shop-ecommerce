@@ -1,11 +1,11 @@
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import avatar from '../../images/avatar.png'
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createCategory } from "../../redux/actions/categoryAction";
 import { useEffect } from "react";
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -14,30 +14,61 @@ export default function AdminAddCategory() {
     const [img, setImg] = useState(avatar)
     const [name, setName] = useState('')
     const [selectedFile, setSelectedFile] = useState(null)
-    // to get loading state from redux
-    const loading = useSelector(state => state.allCategory.loading)
-    // when new image upload save to the state 
+    const [loading, setLoading] = useState(true)
+    const [isPressed, setIsPressed] = useState(false)
+
+
+    // when new image upload save it to the state 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
             setImg(URL.createObjectURL(event.target.files[0]))
             setSelectedFile(event.target.value[0])
         }
     }
+
+    const res = useSelector(state => state.allCategory.category)
+
     // saving data to the database
-    const handelSubmit = (event) => {
+    const handelSubmit = async (event) => {
         event.preventDefault()
+        if (name === "" || selectedFile === null) {
+            notify('Please complete data', "warn")
+            return;
+        }
+
+
         const formData = new FormData()
         formData.append("name", name)
         formData.append("image", selectedFile)
-        if (loading)
-            dispatch(createCategory(formData))
+        setLoading(true)
+        setIsPressed(true)
+        await dispatch(createCategory(formData))
+        setLoading(false)
     }
+
     useEffect(() => {
-        if (loading === true) {
+        if (loading === false) {
             setName('')
             setImg(avatar)
+            setSelectedFile(null)
+            setLoading(true)
+            setTimeout(() => setIsPressed(false), 1000)
+            if (res.status === 201) {
+                notify('download finished', "success")
+            } else {
+                notify('There is a problem please try again later', "error")
+            }
         }
     }, [loading])
+    const notify = (msg, type) => {
+        if (type === "warn") {
+            toast.warn(msg)
+        } else if (type === "success") {
+            toast.success(msg)
+        } else if (type === "error") {
+            toast.error(msg)
+        }
+    }
     return (
         <div>
             <Row className="justify-content-start">
@@ -73,6 +104,10 @@ export default function AdminAddCategory() {
                     <button onClick={handelSubmit} className="btn-save d-inline mt-2">Save Edits</button>
                 </Col>
             </Row>
+            {
+                isPressed ? loading ? <Spinner animation="grow" variant="dark" /> : <h4>Finished</h4> : null
+            }
+            <ToastContainer />
         </div>
     )
 }
