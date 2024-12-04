@@ -2,23 +2,14 @@ import { Container, Row, Placeholder } from "react-bootstrap";
 import SubTitle from "./utilities/SubTitle";
 import CategoriesCard from "../categories/CategoriesCard";
 import categoryimg from '../../images/categories-Photoroom.png'
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getAllCategory } from "../../redux/actions/categoryAction";
+import HomeGategoryHook from "../../hook/category/HomeGategoryHook";
 
 
 
 
 
 export default function HomeCategories() {
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getAllCategory())
-    }, [])
-    const category = useSelector(state => state.allCategory.category)
-    const loading = useSelector(state => state.allCategory.loading)
-    const colors = ["#FFD3E8", "#F4DBA5", "#55CFDF", "#0034FF", "#FFD3E8", "#FF6262"]
-
+    const [category, loading, colors] = HomeGategoryHook()
     return (
         <Container>
             <SubTitle title='Categories' btntitle='More' pathText='/allcategory' />
