@@ -16,9 +16,9 @@ export default function BrandCard({ img }) {
                 className="my-1"
                 style={{
                     width: "100%",
-                    height: "151px",
-                    borderRadius: "8px",
-                    border: "none",
+                    height: "160px",
+                    borderRadius: "5px",
+                    border: "2px solid light-gray",
                     backgroundColor: "#FFFFFF",
                 }}>
                 <Card.Img style={{ width: "100%", height: "151px" }} src={img} />
